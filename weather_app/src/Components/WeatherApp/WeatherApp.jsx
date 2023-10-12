@@ -11,12 +11,40 @@ import wind_icon from "../Asset/wind.png";
 import humidity_icon from "../Asset/humidity.png";
 
 export const WeatherApp = () => {
+
+    let api = "17557e5bb1ab97bca1b55e63e6c46d48";
+
+    const search = async() =>{
+        const element = document.getElementsByClassName("city");
+        if(element[0].value === ''){
+            return 0;
+        }
+
+        let url = `https://api.openweathermap.org/data/2.5/weather?q=${element[0].value}&units=Metric&appid=${api}`;
+
+        let response = await fetch(url);
+        let data = await response.json();
+
+        const humidity = document.getElementsByClassName("humidity-percent");
+        const wind = document.getElementsByClassName("wind-rate");
+        const temperature = document.getElementsByClassName("weather-temp");
+        const location = document.getElementsByClassName("weather-location");
+
+        humidity[0].innerHTML = data.main.humidity;
+        wind[0].innerHTML = data.wind.speed;
+        temperature[0].innerHTML = data.main.temp;
+        location[0].innerHTML = data.name;
+        
+
+
+    }
+
   return (
     
     <div className="container">
         <div className="top-bar">
             <input type="text" className="city" placeholder='Search'/>
-            <div className="search-icon">
+            <div className="search-icon" onClick={search()}>
                 <img src={search_icon} alt="" />
             </div>
         </div>
@@ -40,7 +68,7 @@ export const WeatherApp = () => {
             <div className="element">
                 <img src={wind_icon} alt="" className='icon'/>
                 <div className="data">
-                    <div className="wind-speed">18km/h</div>
+                    <div className="wind-rate">18km/h</div>
                     <div className="text">Wind Speed</div>
                 </div>
 
