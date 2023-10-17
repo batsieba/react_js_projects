@@ -3,6 +3,114 @@ import "./app.css";
 import Trivia from "./components/Trivia";
 function App() {
 
+  //const api = "https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple";
+
+  const [timeOut, setTimeOut] = useState(false);
+  const data = [
+    {
+
+        id: 1,
+        question: "Which is the largest animal in the world?",
+        answers:[
+            {text: "Shark", correct: false},
+            {text: "Blue Whale", correct: true},
+            {text: "Elephant", correct: false},
+            {text: "Giraffe", correct: false}
+        ]
+    },
+    {
+      id: 2,
+        question: "Which is the smallest country in the world?",
+        answers:[
+            {text: "Vatican City", correct: true},
+            {text: "Bhutan", correct: false},
+            {text: "Nepal", correct: false},
+            {text: "Shri Lanka", correct: false}
+        ]
+    },
+    {
+      id: 3,
+        question: "Which is the largest desert in the world?",
+        answers:[
+            {text: "Kalhari", correct: false},
+            {text: "Gobi ", correct: false},
+            {text: "Sahara", correct: false},
+            {text: "Antarctica", correct: true}
+        ]
+    },
+    {
+      id: 4,
+        question: "Which is the largest animal in the world?",
+        answers:[
+            {text: "Shark", correct: false},
+            {text: "Blue Whale", correct: true},
+            {text: "Elephant", correct: false},
+            {text: "Giraffe", correct: false}
+        ]
+    },
+    {
+
+      id: 5,
+      question: "Which is the largest animal in the world?",
+      answers:[
+          {text: "Shark", correct: false},
+          {text: "Blue Whale", correct: true},
+          {text: "Elephant", correct: false},
+          {text: "Giraffe", correct: false}
+      ]
+  },
+  {
+    id: 6,
+      question: "Which is the smallest country in the world?",
+      answers:[
+          {text: "Vatican City", correct: true},
+          {text: "Bhutan", correct: false},
+          {text: "Nepal", correct: false},
+          {text: "Shri Lanka", correct: false}
+      ]
+  },
+  {
+    id: 7,
+      question: "Which is the largest desert in the world?",
+      answers:[
+          {text: "Kalhari", correct: false},
+          {text: "Gobi ", correct: false},
+          {text: "Sahara", correct: false},
+          {text: "Antarctica", correct: true}
+      ]
+  },
+  {
+    id: 8,
+      question: "Which is the largest animal in the world?",
+      answers:[
+          {text: "Shark", correct: false},
+          {text: "Blue Whale", correct: true},
+          {text: "Elephant", correct: false},
+          {text: "Giraffe", correct: false}
+      ]
+  },
+  {
+    id: 9,
+      question: "Which is the largest desert in the world?",
+      answers:[
+          {text: "Kalhari", correct: false},
+          {text: "Gobi ", correct: false},
+          {text: "Sahara", correct: false},
+          {text: "Antarctica", correct: true}
+      ]
+  },
+  {
+    id: 10,
+      question: "Which is the largest animal in the world?",
+      answers:[
+          {text: "Shark", correct: false},
+          {text: "Blue Whale", correct: true},
+          {text: "Elephant", correct: false},
+          {text: "Giraffe", correct: false}
+      ]
+  }
+];
+
   const [questionNumber, setQuestionNumber] = useState(1);
   const moneyPyramid = [
     {id:1, amount: "$ 100"},
@@ -28,7 +136,14 @@ function App() {
           <div className="top">
             <div className="timer">30</div>
           </div>
-          <div className="bottom"><Trivia/></div>
+          <div className="bottom">
+               <Trivia 
+               data={data} 
+               setTimeOut={setTimeOut}
+               questionNumber={questionNumber}
+               setQuestionNumber={setQuestionNumber}
+               />
+            </div>
         </div>
         <div className="pyramid">
           <ul className="moneyList">
